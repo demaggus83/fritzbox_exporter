@@ -57,5 +57,5 @@ jobs:
         with:
           context: .
           push: true
-          platforms: linux/amd64,linux/arm64,linux/arm7,linux/arm6
+          platforms: linux/amd64,linux/arm64,linux/arm/v6,linux/arm/v7
           tags: demaggus/fritzbox-prometheus-exporter:latest

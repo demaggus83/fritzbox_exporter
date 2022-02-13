@@ -6,11 +6,8 @@ builds:
       - CGO_ENABLED=0
   - binary: go_multiarch
     id: go_multiarch
-    goos:
-      - linux
-    goarch:
-      - arm
-      - arm64
-    goarm:
-      - 6
-      - 7
+    targets:
+      - linux_amd64
+      - linux_arm64
+      - linux_arm_6
+      - linux_arm_7
