@@ -11,8 +11,12 @@ builds:
       - static_build
     env:
       - CGO_ENABLED=0
+    flags:
+      - -trimpath
     targets:
       - linux_amd64
       - linux_arm64
       - linux_arm_6
       - linux_arm_7
+changelog:
+  skip: true
