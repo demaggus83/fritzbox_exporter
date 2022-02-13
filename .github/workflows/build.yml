@@ -40,7 +40,7 @@ jobs:
         uses: goreleaser/goreleaser-action@v2
         with:
           version: latest
-          args: release --rm-dist
+          args: ${{ !startsWith(github.ref, 'refs/tags/') && 'build --snapshot' || 'release' }} ${{ github.event_name == 'pull_request' && '--single-target' || '' }} --rm-dist
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
