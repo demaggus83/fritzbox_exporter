@@ -1,6 +1,7 @@
 FROM scratch
 
 ARG TARGETARCH
+ARG TARGETVARIANT
 
 ENV USERNAME username
 ENV PASSWORD password
@@ -10,7 +11,9 @@ ENV LISTEN_ADDRESS 0.0.0.0:9042
 EXPOSE 9042
 
 WORKDIR /app
-COPY metrics.json metrics-lua.json ./
-COPY dist/go_multiarch_linux_$TARGETARCH/go_multiarch /fritzbox_exporter
+COPY dist/go_multiarch_linux_$TARGETARCH${TARGETVARIANT}/go_multiarch ./fritzbox_exporter
 
+COPY metrics.json metrics-lua.json ./
+
+ENTRYPOINT [ "./fritzbox_exporter" ]
 CMD ./fritzbox_exporter -username $USERNAME -password $PASSWORD -gateway-url ${GATEWAY_URL} -listen-address ${LISTEN_ADDRESS}
