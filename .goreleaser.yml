@@ -1,26 +1,16 @@
 before:
   hooks:
-    # You may remove this if you don't use go modules.
     - go mod download
-    # you may remove this if you don't need go generate
-#    - go generate ./...
 builds:
+  - env:
+      - CGO_ENABLED=0
   - binary: go_multiarch
     id: go_multiarch
     goos:
-    - linux
+      - linux
     goarch:
-    - amd64
-    - arm64
-    - arm6
-    - arm7
-checksum:
-  name_template: 'checksums.txt'
-snapshot:
-  name_template: "{{ .Tag }}-next"
-changelog:
-  sort: asc
-  filters:
-    exclude:
-      - '^docs:'
-      - '^test:'
+      - arm
+      - arm64
+    goarm:
+      - 6
+      - 7
