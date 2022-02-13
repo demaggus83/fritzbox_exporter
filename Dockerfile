@@ -11,7 +11,7 @@ ENV LISTEN_ADDRESS 0.0.0.0:9042
 EXPOSE 9042
 
 WORKDIR /app
-COPY dist/go_multiarch_linux_$TARGETARCH${TARGETVARIANT}/go_multiarch ./fritzbox_exporter
+COPY dist/go_multiarch_linux_$TARGETARCH${TARGETVARIANT:+_7}*/go_multiarch ./fritzbox_exporter
 
 COPY metrics.json metrics-lua.json ./
 
